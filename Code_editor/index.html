@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code-editor</title>
+
+  <!-- custom css -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- font-awesome-cdn -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+
+</head>
+<body>
+  <!-- Body-section start -->
+  <div class="container">
+      <div class="left">
+        
+          <label><i class="fa-brands fa-html5"></i>HTML</label>
+          <textarea  id="html-code"></textarea>
+
+          <label><i class="fa-brands fa-css3-alt"></i>CSS</label>
+          <textarea  id="css-code"></textarea>
+
+          <label><i class="fa-brands fa-js"></i>Javascript</label>
+          <textarea  id="js-code"></textarea>
+
+      </div>
+
+      <div class="right">
+
+        <label><i class="fa-solid fa-play"></i>Output</label>
+        <iframe id="output"> </iframe>
+        
+      </div>
+  </div>
+  <!-- Body-section end -->
+
+  <!-- Script -->
+   <script>
+    function run(){
+      let htmlCode = document.querySelector(".left #html-code").value;
+      let cssCode ="<style>" + document.querySelector(".left #css-code").value + "</style>";
+      let jsCode = document.querySelector(".left #js-code").value;
+      let output = document.querySelector(".right #output");
+
+      output.contentDocument.body.innerHTML = htmlCode + cssCode;
+      output.contentWindow.eval(jsCode);
+    }
+
+      document.querySelector(".left #html-code").addEventListener("keyup", run);
+      document.querySelector(".left #css-code").addEventListener("keyup", run);
+      document.querySelector(".right #js-code").addEventListener("keyup", run);
+
+   </script>
+  <!-- Script -->
+  
+</body>
+</html>
